@@ -4,7 +4,7 @@ from .views import FileViewset
 from django.conf.urls import include
 
 router = DefaultRouter()
-router.register('files', FileViewset, base_name='files')
+router.register('files', FileViewset,)
 # router.register('files', FileViewset)
 
 urlpatterns = [
