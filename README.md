@@ -59,7 +59,7 @@ Feel free to do the parsing with any library of your liking, but do:
 * Remember to update the `requirements.txt` file
 * Provide a django management command to trigger the ingestion.
 
-######python manage.py docker exec -it bmat_bo_api python manage.py load_files
+###### python manage.py docker exec -it bmat_bo_api python manage.py load_files
 
 If you manage to ingest the three files provided, you'll be able to use the API you created in part 1 to retreive the list of files and the metadata contained in each. Neat!
 
@@ -67,11 +67,11 @@ If you manage to ingest the three files provided, you'll be able to use the API 
 
 * As mentioned in the context section, the final aim of metadata ingestion is to create a SingleView. What could be doone if two files provide conflicting information on the same work?
 
-######We could make some fields unique to avoid duplication. We can also do validation to check if the data already exists for the fields we expect to be unique
+###### We could make some fields unique to avoid duplication. We can also do validation to check if the data already exists for the fields we expect to be unique
 
 * Could you use the endpoints described in this assignment or would have to create some new endpoints to provide the works of the SingleView?
 
-######I used the the endpoints described in the assignment
+###### I used the the endpoints described in the assignment
 
 * Imagine that the Single View has 20 million musical works, do you think your solution would have a similar response time? What technologies would you use to keep response times reasonable?
 
