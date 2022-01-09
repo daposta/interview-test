@@ -21,12 +21,4 @@ services:
     depends_on:
       - db
 
-  api-docs:
-    image: swaggerapi/swagger-ui
-    container_name: bmat_bo_api_docs
-    ports:
-      - "8001:8080"
-    volumes:
-      - ./openapi.yml:/openapi.yml
-    environment:
-      SWAGGER_JSON: /openapi.yml
+  
