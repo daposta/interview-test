@@ -4,7 +4,7 @@ from .models import File, Work
 class FileSerializer(serializers.ModelSerializer):
   class Meta:
     model = File
-    fields = ('id','filename','work_count')
+    fields = ('id','filename',)
 
 
 class WorkSerializer(serializers.ModelSerializer):

@@ -11,3 +11,5 @@ data
 static
 
 **/interview-venv
+
+.env

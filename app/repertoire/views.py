@@ -8,10 +8,11 @@ from rest_framework.response import Response
 # Create your views here.
 class FileViewset(viewsets.ViewSet):
   queryset = File.objects.all()
-  serializer_class = (FileSerializer,)
+  #serializer_class = (FileSerializer,)
 
   def list(self, request):
     files = File.objects.all()
+    print(files)
     serializer = FileSerializer(files, many=True)
     return Response(serializer.data)
 
