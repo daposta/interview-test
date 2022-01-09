@@ -11,21 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os
-import environ
-
-# env = environ.Env(
-#     # set casting, default value
-#     DEBUG=(bool, False)
-# )
-
-env = environ.Env()
-# environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -86,25 +75,24 @@ TEMPLATES = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': env('POSTGRES_NAME'),
-    #     'USER':  env('POSTGRES_USER'),
-    #     'PASSWORD': env('POSTGRES_PASSWORD'),
-    #     'HOST': env('POSTGRES_HOST'),
-    #     'PORT': 5432,
-    # }
-     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "interviewdb",
-        "USER": "passme",
-        "PASSWORD": "passme",
-        'HOST': 'localhost', # the missing piece of the puzzle
-        'PORT': '5432', # optional, I don't need this since I'm using the standard port
-        # 'ATOMIC_REQUESTS': True,
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
+    #  "default": {
+    #     "ENGINE": "django.db.backends.postgresql_psycopg2",
+    #     "NAME": "interviewdb",
+    #     "USER": "passme",
+    #     "PASSWORD": "passme",
+    #     'HOST': 'localhost', # the missing piece of the puzzle
+    #     'PORT': '5432', # optional, I don't need this since I'm using the standard port
+    #     # 'ATOMIC_REQUESTS': True,
+    # }
 }
-print(env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
