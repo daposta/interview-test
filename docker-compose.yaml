@@ -5,19 +5,28 @@ services:
     image: postgres
     ports:
       - 5432:5432
-    container_name: bmat_bo_db
+    container_name: interview_bo_db
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   api:
-    container_name: bmat_bo_api
+    container_name: interview_bo_api
     build: .
     command:
       sh -c "python manage.py makemigrations &&
-             python manage.py migrate && 
+             python manage.py migrate &&
+             coverage run --source='.' manage.py test repertoire &&
+             coverage report &&
+             python manage.py load_files &&
              python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./app:/code
@@ -25,6 +34,7 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   
