@@ -75,4 +75,4 @@ If you manage to ingest the three files provided, you'll be able to use the API 
 
 * Imagine that the Single View has 20 million musical works, do you think your solution would have a similar response time? What technologies would you use to keep response times reasonable?
 
-###### One approach is to use pagination to cut down the volume of data returned per time. Also caching can be implemented to increase performance. We can even do raw sql to aid performance.
+###### For 20million records, one approach is to use pagination to cut down the volume of data returned per time. Also caching can be implemented to increase performance. We can even do raw sql to aid performance.
