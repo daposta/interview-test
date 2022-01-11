@@ -9,7 +9,7 @@ class FilesAPITestcase(APITestCase):
 
     
   def test_lists(self):
-    response = self.client.get('/files/')
+    response = self.client.get('/api/files/')
     print(response)
     #self.assertEqual(type(response), [])
     self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -21,7 +21,7 @@ class FilesAPITestcase(APITestCase):
     work_obj = Work.objects.create(title = 'Donda', contributors= contributor_list, iswc = 'dd8902834', 
             source = 'Warner', proprietary_id = 4, file_id = file_obj )
     
-    response = self.client.get(f'/files/{file_obj.id}/')
+    response = self.client.get(f'/api/files/{file_obj.id}/')
     self.assertEqual(response.status_code, status.HTTP_200_OK)
     
 
@@ -32,7 +32,7 @@ class FilesAPITestcase(APITestCase):
     work_obj = Work.objects.create(title = 'Donda', contributors= contributor_list, iswc = 'dd8902834', 
             source = 'Warner', proprietary_id = 4, file_id = file_obj )
     
-    response = self.client.get(f'/files/{file_obj.id}/works/')
+    response = self.client.get(f'/api/files/{file_obj.id}/works/')
     self.assertEqual(response.status_code, status.HTTP_200_OK)
 
   def test_work_in_file(self):
@@ -42,7 +42,7 @@ class FilesAPITestcase(APITestCase):
     work_obj = Work.objects.create(title = 'Donda', contributors= contributor_list, iswc = 'dd8902834', 
             source = 'Rockafella', proprietary_id = 4, file_id = file_obj )
     
-    response = self.client.get(f'/files/{file_obj.id}/works/{work_obj.id}/')
+    response = self.client.get(f'/api/files/{file_obj.id}/works/{work_obj.id}/')
     
     self.assertEqual(response.status_code, status.HTTP_200_OK)
     self.assertEqual(response.data['source'], 'Rockafella')
