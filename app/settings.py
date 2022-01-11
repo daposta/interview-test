@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^4imbn)zj28tgz!*@o8aj(*^hbi16=v%soe5(3^sv*xfv)!e!=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost", '']
 
 
 # Application definition
@@ -40,8 +40,14 @@ INSTALLED_APPS = [
     # Local App
     "repertoire.apps.RepertoireConfig",
     # Third Party Apps
-    "rest_framework"
+    "rest_framework",
+    'rest_framework_swagger',
+
 ]
+
+REST_FRAMEWORK = { 
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,6 +73,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+        'libraries' : {
+                'staticfiles': 'django.templatetags.static', 
+            }
         },
     },
 ]
@@ -75,24 +84,28 @@ TEMPLATES = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
-    }
-    #  "default": {
-    #     "ENGINE": "django.db.backends.postgresql_psycopg2",
-    #     "NAME": "interviewdb",
-    #     "USER": "passme",
-    #     "PASSWORD": "passme",
-    #     'HOST': 'localhost', # the missing piece of the puzzle
-    #     'PORT': '5432', # optional, I don't need this since I'm using the standard port
-    #     # 'ATOMIC_REQUESTS': True,
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'postgres',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'postgres',
+    #     'HOST': 'db',
+    #     'PORT': 5432,
     # }
+     "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "interviewdb",
+        "USER": "passme",
+        "PASSWORD": "passme",
+        'HOST': 'localhost', # the missing piece of the puzzle
+        'PORT': '5432', # optional, I don't need this since I'm using the standard port
+        # 'ATOMIC_REQUESTS': True,
+    }
 }
+
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
