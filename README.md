@@ -59,7 +59,7 @@ Feel free to do the parsing with any library of your liking, but do:
 * Remember to update the `requirements.txt` file
 * Provide a django management command to trigger the ingestion.
 
-###### python manage.py load_files
+###### docker exec -it interview_bo_api python manage.py load_files
 
 If you manage to ingest the three files provided, you'll be able to use the API you created in part 1 to retreive the list of files and the metadata contained in each. Neat!
 
