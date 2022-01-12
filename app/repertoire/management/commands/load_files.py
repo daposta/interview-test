@@ -14,7 +14,13 @@ class Command(BaseCommand):
       files_dir = os.path.join(ROOT_DIR, "files")
       
       for file in os.listdir(files_dir):
-        file_obj = File.objects.create(filename = file)
+        try:
+          file_obj = File.objects.create(filename = file)
+        except Exception as e:
+          print('entry already exists')
+          continue
+
+        
         
         full_file_path = files_dir + '/' + file
         myfile = open(full_file_path)
@@ -28,3 +34,4 @@ class Command(BaseCommand):
           Work.objects.create(title = row[0], contributors= contributor_list, iswc = row[2], 
             source = row[3], proprietary_id = row[4], file_id = file_obj  )
         myfile.close()
+      print('done...')
