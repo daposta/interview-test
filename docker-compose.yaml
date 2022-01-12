@@ -26,6 +26,7 @@ services:
              python manage.py migrate &&
              coverage run --source='.' manage.py test repertoire &&
              coverage report &&
+             coverage html &&
              python manage.py load_files &&
              python manage.py runserver 0.0.0.0:8000"
     volumes:

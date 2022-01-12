@@ -4,10 +4,10 @@ from .models import File, Work
 class FileSerializer(serializers.ModelSerializer):
   class Meta:
     model = File
-    fields = ('id','filename',)
+    fields = ['id','filename',]
 
 
 class WorkSerializer(serializers.ModelSerializer):
   class Meta:
     model = Work
-    fields = ('id', 'proprietary_id', 'iswc', 'source', 'title' , 'contributors')
+    fields = ['id', 'proprietary_id', 'iswc', 'source', 'title' , 'contributors']

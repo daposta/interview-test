@@ -10,7 +10,8 @@ from django.core.exceptions import ObjectDoesNotExist
 class FileViewset(viewsets.ViewSet):
   """ File resource. """
   queryset = File.objects.all()
-  #serializer_class = (FileSerializer,)
+  serializer_class = FileSerializer
+  
 
   def list(self, request):
     """
@@ -20,11 +21,16 @@ class FileViewset(viewsets.ViewSet):
     files = File.objects.all()
     serializer = FileSerializer(files, many=True)
     return Response(serializer.data)
+  
 
-  @action(detail=False, methods=("get",), url_path='(?P<file_id>\d+)')
-  def file_detail(self, request, file_id=None):
+class FileObjectViewset(viewsets.ViewSet):
+  """ File resource. """
+  queryset = File.objects.all()
+  serializer_class = FileSerializer
+
+  def list(self, request,file_id):
     """
-        Return details of a file by File ID.
+      Return details of a file by File ID.
 
     """
     try:
@@ -36,20 +42,25 @@ class FileViewset(viewsets.ViewSet):
     return Response(serializer.data)
 
 
-  @action(detail=False, methods=("get",), url_path='(?P<file_id>\d+)/works')
-  def works_in_file(self, request, file_id=None):
+class WorkViewset(viewsets.ViewSet):
+  serializer_class = WorkSerializer
+  queryset = Work.objects.all()
+
+  def list(self, request,file_id):
     """
-          Return a list of works in a file.
+        Return a list of works in a file.
 
     """
-      #file = self.get_queryset().filter(pk =file_id)
     works = Work.objects.filter(file_id = file_id)
     serializer = WorkSerializer(works, many=True)
     return Response(serializer.data)
 
 
-  @action(detail=False, methods=("get",), url_path='(?P<file_id>\d+)/works/(?P<work_id>\d+)')
-  def work_in_file(self, request,file_id=None, work_id=None):
+class WorkObjectViewset(viewsets.ViewSet):
+  serializer_class = WorkSerializer
+  queryset = Work.objects.all()
+
+  def list(self, request,file_id,work_id):
     """
         Return work in a file by ID.
 
@@ -58,6 +69,3 @@ class FileViewset(viewsets.ViewSet):
     
     serializer = WorkSerializer(work)
     return Response(serializer.data)
-
-
-
