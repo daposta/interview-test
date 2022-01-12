@@ -84,23 +84,23 @@ TEMPLATES = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'postgres',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'postgres',
-    #     'HOST': 'db',
-    #     'PORT': 5432,
-    # }
-     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "interviewdb",
-        "USER": "passme",
-        "PASSWORD": "passme",
-        'HOST': 'localhost', # the missing piece of the puzzle
-        'PORT': '5432', # optional, I don't need this since I'm using the standard port
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'postgres',
+         'USER': 'postgres',
+         'PASSWORD': 'postgres',
+         'HOST': 'db',
+         'PORT': 5432,
+     }
+    # "default": {
+    #    "ENGINE": "django.db.backends.postgresql_psycopg2",
+    #    "NAME": "interviewdb",
+    #    "USER": "passme",
+    #    "PASSWORD": "passme",
+    #    'HOST': 'localhost', # the missing piece of the puzzle
+    #    'PORT': '5432', # optional, I don't need this since I'm using the standard port
         # 'ATOMIC_REQUESTS': True,
-    }
+  #  }
 }
 
 
