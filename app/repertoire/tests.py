@@ -41,7 +41,7 @@ class FilesObjectAPITestcase(APITestCase):
 
 class WorkListAPITestcase(APITestCase):
   def setUp(self):
-    file_obj = File.objects.create(filename = 'Test')
+    file_obj = File.objects.create(filename = 'Test2')
     
     contributor_list = 'Kanye West|Da Baby'.split('|')
     work_obj = Work.objects.create(title = 'Donda', contributors= contributor_list, iswc = 'dd8902834', 
@@ -57,16 +57,21 @@ class WorkListAPITestcase(APITestCase):
 
 class WorkObjectAPITestcase(APITestCase):
   def setUp(self):
-    file_obj = File.objects.create(filename = 'Test')
+    file_obj = File.objects.create(filename = 'Test4')
     
-    contributor_list = 'Kanye West|Da Baby'.split('|')
+    contributor_list = 'Kanye West'.split('|')
     work_obj = Work.objects.create(title = 'Donda', contributors= contributor_list, iswc = 'dd8902834', 
             source = 'Warner', proprietary_id = 4, file_id = file_obj )
     self.data = {'file_id': file_obj.id, 'work_id': work_obj.id}
 
-  def test_lists(self):
-    print('called 3', self.data['file_id'])
-    response = self.client.get(f'/files/{self.data["file_id"]}/works/{self.data["work"]}')
+  def test_list(self):
+    print('called 4', self.data['file_id'])
+    print('called 4', self.data['work_id'])
+    work_id = self.data["work_id"]
+    file_id =  self.data['file_id']
+    response = self.client.get(f'/files/{file_id}/works/{work_id}/')
+    print(response.status_code)
+    print(response)
     self.assertEqual(response.status_code, status.HTTP_200_OK)
   # def test_works_in_file(self):
   #   file_obj = File.objects.create(filename = 'Test1')

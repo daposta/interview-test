@@ -60,7 +60,7 @@ class WorkObjectViewset(viewsets.ViewSet):
   serializer_class = WorkSerializer
   queryset = Work.objects.all()
 
-  def list(self, request,file_id,work_id):
+  def list(self, request, file_id, work_id):
     """
         Return work in a file by ID.
 

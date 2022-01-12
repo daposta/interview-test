@@ -24,6 +24,8 @@ services:
     command:
       sh -c "python manage.py makemigrations &&
              python manage.py migrate &&
+             coverage run --source='.' manage.py test &&
+             coverage report &&
              python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./app:/code
