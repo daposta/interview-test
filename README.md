@@ -59,10 +59,10 @@ Feel free to do the parsing with any library of your liking, but do:
 * Remember to update the `requirements.txt` file
 * Provide a django management command to trigger the ingestion.
 
-###### Makemigrations - docker exec -it bmat_bo_api  python app/manage.py makemigrations
-###### Migrate command - docker exec -it bmat_bo_api  python app/manage.py migrate
+
 ###### Run Fixtures - docker exec -it bmat_bo_api python app/manage.py load_files
-###### Run test: docker exec -it bmat_bo_api  python app/manage.py test
+###### Run Test: docker exec -it bmat_bo_api  python app/manage.py test
+###### Run Converage: docker exec -it bmat_bo_api  python app/manage.py test
 
 If you manage to ingest the three files provided, you'll be able to use the API you created in part 1 to retreive the list of files and the metadata contained in each. Neat!
 
