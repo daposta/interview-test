@@ -22,9 +22,9 @@ services:
     container_name: bmat_bo_api
     build: .
     command: 
-      sh -c "python manage.py makemigrations &&
-             python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
+      sh -c "python app/manage.py makemigrations &&
+             python app/manage.py migrate &&
+             python app/manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
       - ./files:/files
