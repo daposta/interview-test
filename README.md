@@ -62,7 +62,8 @@ Feel free to do the parsing with any library of your liking, but do:
 
 ###### Run Fixtures - docker exec -it bmat_bo_api python app/manage.py load_files
 ###### Run Test: docker exec -it bmat_bo_api  python app/manage.py test
-###### Run Converage: docker exec -it bmat_bo_api  python app/manage.py test
+###### Run Converage: docker exec -it bmat_bo_api  coverage run --source='.' app/manage.py test
+###### Run Converage Report: docker exec -it bmat_bo_api  coverage report
 
 If you manage to ingest the three files provided, you'll be able to use the API you created in part 1 to retreive the list of files and the metadata contained in each. Neat!
 

@@ -33,7 +33,7 @@ class FilesObjectAPITestcase(APITestCase):
 
 
   def test_lists(self):
-    print('called 2', self.data['file_id'])
+    
     response = self.client.get(f'/files/{self.data["file_id"]}/')
     self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -49,7 +49,7 @@ class WorkListAPITestcase(APITestCase):
     self.data = {'file_id': file_obj.id, 'work_id': work_obj.id}
 
   def test_lists(self):
-    print('called 3', self.data['file_id'])
+    
     response = self.client.get(f'/files/{self.data["file_id"]}/works/')
     self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -65,13 +65,11 @@ class WorkObjectAPITestcase(APITestCase):
     self.data = {'file_id': file_obj.id, 'work_id': work_obj.id}
 
   def test_list(self):
-    print('called 4', self.data['file_id'])
-    print('called 4', self.data['work_id'])
+    
     work_id = self.data["work_id"]
     file_id =  self.data['file_id']
     response = self.client.get(f'/files/{file_id}/works/{work_id}/')
-    print(response.status_code)
-    print(response)
+    
     self.assertEqual(response.status_code, status.HTTP_200_OK)
   # def test_works_in_file(self):
   #   file_obj = File.objects.create(filename = 'Test1')
